@@ -2,21 +2,28 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CountrySelector from "./CountrySelector";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import countryList from "react-select-country-list";
 
 function Form() {
 	let { formType } = useParams();
 	// console.log({ formType });
 	const [name, setName] = useState("");
-	const [countryCode, setCountryCode] = useState("");
+	const [countryCode, setCountryCode] = useState(null);
 	const [phoneNumber, setPhoneNumber] = useState("");
 
 	useEffect(() => {
 		const savedData = localStorage.getItem(`form-${formType}`);
 		if (savedData) {
 			const { name, countryCode, phoneNumber } = JSON.parse(savedData);
-			// console.log(savedData);
+			console.log(savedData);
 			setName(name);
-			setCountryCode(countryCode);
+			setCountryCode(
+				countryList()
+					.getData()
+					.find((country) => country.value === countryCode)
+			);
 			setPhoneNumber(phoneNumber);
 		}
 	}, [formType]);
@@ -24,6 +31,7 @@ function Form() {
 	const handleSelect = (country) => {
 		// console.log(country);
 		setCountryCode(country);
+		setPhoneNumber("");
 	};
 
 	const handleSubmit = async (e) => {
@@ -34,11 +42,17 @@ function Form() {
 			alert("Name must contain only alphabetic characters");
 			return;
 		}
-		if (!/^[\d{10}]+$/.test(phoneNumber)) {
+		if (!/^[+\d]+$/.test(phoneNumber)) {
 			alert("Phone Number must be numeric");
 			return;
 		}
-		const formData = { formType, name, countryCode, phoneNumber };
+		const formData = {
+			formType,
+			name,
+			countryCode: countryCode.value,
+			phoneNumber,
+		};
+		// console.log({ formData });
 		try {
 			await axios.post("http://localhost:5000/save", formData);
 			localStorage.setItem(`form-${formType}`, JSON.stringify(formData));
@@ -79,7 +93,10 @@ function Form() {
 							<div className="mt-2">
 								<CountrySelector
 									handleSelect={handleSelect}
-									countryCode={countryCode}
+									countryCode={
+										countryCode ? countryCode.value : ""
+									}
+									onCountryChange={setCountryCode}
 								/>
 							</div>
 						</div>
@@ -88,15 +105,15 @@ function Form() {
 								Phone Number:
 							</label>
 							<div className="mt-2">
-								<input
-									type="text"
+								<PhoneInput
+									placeholder="Enter phone number"
 									value={phoneNumber}
-									onChange={(e) =>
-										setPhoneNumber(e.target.value)
+									onChange={setPhoneNumber}
+									country={
+										countryCode ? countryCode.code : ""
 									}
-									required
-									className="block w-full rounded-md border-0 py-1.5 px-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-0 sm:text-sm sm:leading-6"
-								></input>
+									international
+								/>
 							</div>
 						</div>
 						<button
