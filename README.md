@@ -4,9 +4,9 @@ This project contains a simple form application that allows users to submit form
 
 ## Table of Contents
 
-- Installation
-- Running the Application
-- Functionality
+- [Installation](https://github.com/Trivarna13/form-app/tree/master#installation)
+- [Running the Application](https://github.com/Trivarna13/form-app/tree/master#running-the-application)
+- [Functionality](https://github.com/Trivarna13/form-app/tree/master#functionality)
 
 ## Installation
 
