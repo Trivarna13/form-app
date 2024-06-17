@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CountrySelector from "./CountrySelector";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -113,6 +113,7 @@ function Form() {
 										countryCode ? countryCode.code : ""
 									}
 									international
+									className="block w-full rounded-md border-0 py-1.5 px-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-0 sm:text-sm sm:leading-6"
 								/>
 							</div>
 						</div>
@@ -122,6 +123,12 @@ function Form() {
 						>
 							Submit
 						</button>
+						<Link
+							to="/"
+							className="flex w-full justify-center rounded-md bg-gray-400 px-3.5 py-2.5 text-base font-semibold text-white shadow-sm hover:bg-gray-300 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+						>
+							Go Back
+						</Link>
 					</form>
 				</div>
 			</div>
