@@ -17,10 +17,14 @@ function Home() {
 		}
 	};
 	return (
-		<div className="flex min-h-screen justify-center items-center px-6 py-12 lg:px-8">
-			<Button label="Form A" onClick={() => navigateToForm("A")}></Button>
-			<Button label="Form B" onClick={() => navigateToForm("B")}></Button>
-			<Button label="Refresh Data" onClick={refreshData}></Button>
+		<div className="flex min-h-screen flex-col justify-center items-center">
+			<div className="flex space-x-4">
+				<Button label="Form A" onClick={() => navigateToForm("A")} />
+				<Button label="Form B" onClick={() => navigateToForm("B")} />
+			</div>
+			<div className="mt-4">
+				<Button label="Refresh Data" onClick={refreshData} />
+			</div>
 		</div>
 	);
 }
