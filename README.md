@@ -100,3 +100,7 @@ The application synchronizes form data with an online Excel sheet (Google Sheets
 5. **Local Storage**:
 Form data is saved in the browser's local storage based on the form type, allowing users to retain their inputs even if they navigate away from the form.
 
+## Links:
+- Backend Hosting: [https://form-app-emgw.onrender.com/data](https://form-app-emgw.onrender.com/data)
+- Frontend Hosting: [https://form-app-flame.vercel.app/](https://form-app-flame.vercel.app/)
+- Google Sheets: [https://docs.google.com/spreadsheets/d/19YVX8-y-mCusWVsOpCfRqxx8Imu_9O0p9IImxOvRqLQ/edit?usp=sharing](https://docs.google.com/spreadsheets/d/19YVX8-y-mCusWVsOpCfRqxx8Imu_9O0p9IImxOvRqLQ/edit?usp=sharing)
