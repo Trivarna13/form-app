@@ -54,7 +54,10 @@ function Form() {
 		};
 		// console.log({ formData });
 		try {
-			await axios.post("http://localhost:5000/save", formData);
+			await axios.post(
+				"https://form-app-emgw.onrender.com/save",
+				formData
+			);
 			localStorage.setItem(`form-${formType}`, JSON.stringify(formData));
 			alert("Form submitted successfully");
 		} catch (error) {

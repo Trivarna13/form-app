@@ -9,7 +9,7 @@ function Home() {
 	};
 	const refreshData = async () => {
 		try {
-			await axios.get("http://localhost:5000/sync");
+			await axios.get("https://form-app-emgw.onrender.com/sync");
 			alert("Data synchronized with Online Excel Sheet (Google Sheets)");
 		} catch (error) {
 			console.log(error);
